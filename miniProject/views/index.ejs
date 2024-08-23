@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">Note Taking App</a>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New Note</button>
+        </div>
+    </nav>
+
+    <div class="container mx-auto mt-4 flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside class="bg-white w-full lg:w-1/4 p-4 border-r border-gray-300">
+            <h2 class="text-xl font-bold mb-4">Notes</h2>
+            <ul>
+                <% if(files.length> 0){ %>
+                    <% files.forEach(file=>{ %>
+                        <div class="border-[1px] mb-2 p-3 rounded-sm border-gray-200">
+                            <div class="flex items-center justify-between">
+                                <li class="p-2 text-lg border-gray-200 capitalize">
+                                    <%= file.split('.').slice(0, -1).join('')%>
+                                </li>
+                                <a href="/edit/<%= file %>" id="edit" class="relative ri-edit-line cursor-pointer"></a>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <a href="/files/<%= file %>" class="p-2 text-blue-500 text-sm">Read More.</a>
+                                <a id="delete" onclick="deleteNote('<%= file %>')" class="ri-delete-bin-fill relative cursor-pointer"></a>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% }else{ %>
+                    <h3 class="text-2xl opacity-30">No notes yet</h3>
+                <% } %>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <form class="bg-white flex-1 p-4" action="/create" method="post">
+            <h2 class="text-xl font-bold mb-4">Note Title</h2>
+            <input name="title" type="text" class="p-2 border-[1px] border-gray-300 outline-none  mb-3" placeholder="Note title..">
+            <textarea name="desc" class="outline-none w-full resize-none h-64 p-2 border border-gray-300 rounded"
+                placeholder="Write your note here..."></textarea>
+            <button type="submit" class="px-10 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-400">Submit</button>
+        </form>
+    </div>
+</body>
+<script>
+    function deleteNote(filename){
+        console.log(`/files/${filename}`)
+        fetch(`/files/${filename}`,{
+            method : 'DELETE'
+        }).then(res=>{
+            if(res.ok){
+                location.reload();
+            }else{
+                alert('Failed to delete the note')
+            }
+        });
+    }
+</script>
+<script src="/javascripts/script.js"></script>
+
+</html>
