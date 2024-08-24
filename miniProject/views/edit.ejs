@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="main h-screen w-full p-10">
+        <a href="/" class="text text-blue-700 capitalize"><i class="ri-arrow-left-line"></i> Go Back to home</a>
+        <form action="/edit" method="post" class="flex flex-col mt-10 gap-2 justify-start w-fit">
+            <div class="flex items-center p-2 mb-3 border-[1px] bg-neutral-200 border-gray-300">
+                <input name="prev_name" type="text"
+                    class="outline-none pointer-events-none bg-neutral-200"
+                    placeholder="previous name" value="<%= filename.split('.').slice(0,-1).join('') %>">
+                <i class="ri-lock-line"></i>
+            </div>
+            <input name="new_name" type="text" class="p-2 border-[1px] bg-neutral-200 border-gray-300 outline-none mb-3" placeholder="new name">
+            <button class="bg-yellow-500 text-white px-10 py-2 w-fit hover:bg-yellow-600 rounded-sm">Update</button>
+        </form>
+    </div>
+    </div>
+</body>
+<script src="/javascripts/script.js"></script>
+
+</html>
