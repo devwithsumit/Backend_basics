@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <nav class="bg-blue-600 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">Note Taking App</a>
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">New Note</button>
+        </div>
+    </nav>
+    <div class="main h-[89vh] w-full p-10">
+        <a href="/" class="text-blue-700 capitalize"><i class="ri-arrow-left-line"></i> Go Back to home</a>
+        <div class="notebox border-[1px] mt-5 h-fit p-5 border-gray-400">
+            <h1 class="text-2xl uppercase border-b-[1px] border-gray-400 w-fit"><%= filename.split('.').slice(0, -1).join('') %></h1>
+            <p class="text-neutral-500 mt-4"><%= data %></p>
+        </div>
+    </div>
+</body>
+<script src="/javascripts/script.js"></script>
+
+</html>
