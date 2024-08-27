@@ -1,0 +1,46 @@
+*{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+}
+#edit::after{
+    content: "Edit name";
+    text-transform: capitalize;
+    position: absolute;
+    white-space: nowrap;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    color: white;
+    opacity: 0;
+    top: 0; 
+    left: 100%;
+}
+#delete::after{
+    content: "delete note";
+    text-transform: capitalize;
+    position: absolute;
+    white-space: nowrap;
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    color: white;
+    opacity: 0;
+    top: 0;
+    left: 100%;
+}
+#edit:hover::after{
+    opacity: 1;
+}
+#delete:hover::after{
+    opacity: 1;
+}
